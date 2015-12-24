@@ -1,22 +1,22 @@
-#include "UARTFingerprint.h"
+#include "MECHA_UARTFingerprint.h"
 
-UARTFinger::UARTFinger(SoftwareSerial *Serial){
+MECHA_UARTFinger::MECHA_UARTFinger(SoftwareSerial *Serial){
   sofSeri = Serial;
   Seri    = sofSeri;
 }
 
-UARTFinger::UARTFinger(HardwareSerial *Serial){
+MECHA_UARTFinger::MECHA_UARTFinger(HardwareSerial *Serial){
   hwSeri  = Serial;
   Seri    = hwSeri;
 }
 
-int UARTFinger::begin(){
+int MECHA_UARTFinger::begin(){
   if(hwSeri){hwSeri->begin(UART_BAUD); return 0;}
   if(sofSeri){sofSeri->begin(UART_BAUD); return 0;}
   return -1;
 }
 
-void UARTFinger::Sleep(){//수면모드로 접속..
+void MECHA_UARTFinger::Sleep(){
   byte CMD[8];
   for(int i = 0; i < 8; i++){
     CMD[i] = FORMAT[i];
@@ -25,7 +25,7 @@ void UARTFinger::Sleep(){//수면모드로 접속..
   send(CMD);
 }
 
-void UARTFinger::Mode(byte value){
+void MECHA_UARTFinger::Mode(byte value){
   byte CMD[8];
   for(int i = 0; i < 8; i++){
     CMD[i] = FORMAT[i];
@@ -35,7 +35,7 @@ void UARTFinger::Mode(byte value){
   send(CMD);
 }
 
-int UARTFinger::AddUser1(uint16_t id,byte privilege){
+int MECHA_UARTFinger::AddUser1(uint16_t id,byte privilege){
   if(id>0xfff) return -1;
   byte idL = (id & 0xff);
   byte idH = (id >> 8) & 0xff;
@@ -50,7 +50,7 @@ int UARTFinger::AddUser1(uint16_t id,byte privilege){
   send(CMD);
 }
 
-int UARTFinger::AddUser2(uint16_t id,byte privilege){
+int MECHA_UARTFinger::AddUser2(uint16_t id,byte privilege){
   if(id>0xfff) return -1;
   byte idL = (id & 0xff);
   byte idH = (id >> 8) & 0xff;
@@ -66,7 +66,7 @@ int UARTFinger::AddUser2(uint16_t id,byte privilege){
   return 0;
 }
 
-int UARTFinger::AddUser3(uint16_t id,byte privilege){
+int MECHA_UARTFinger::AddUser3(uint16_t id,byte privilege){
   if(id>0xfff) return -1;
   byte idL = (id & 0xff);
   byte idH = (id >> 8) & 0xff;
@@ -82,7 +82,7 @@ int UARTFinger::AddUser3(uint16_t id,byte privilege){
   return 0;
 }
 
-int UARTFinger::DelUser(){
+int MECHA_UARTFinger::DelUser(){
   byte CMD[8];
   for(int i = 0; i < 8; i++){
     CMD[i] = FORMAT[i];
@@ -92,7 +92,7 @@ int UARTFinger::DelUser(){
   return 0;
 }
 
-int UARTFinger::DelUser(uint16_t id){
+int MECHA_UARTFinger::DelUser(uint16_t id){
   byte CMD[8];
   for(int i = 0; i < 8; i++){
     CMD[i] = FORMAT[i];
@@ -107,7 +107,7 @@ int UARTFinger::DelUser(uint16_t id){
   return 0;
 }
 
-void UARTFinger::CountUser(){
+void MECHA_UARTFinger::CountUser(){
   byte CMD[8];
   for(int i = 0; i < 8; i++){
     CMD[i] = FORMAT[i];
@@ -116,7 +116,7 @@ void UARTFinger::CountUser(){
   send(CMD);
 }
 
-int UARTFinger::Compare(uint16_t id){
+int MECHA_UARTFinger::Compare(uint16_t id){
   byte CMD[8];
   for(int i = 0; i < 8; i++){
     CMD[i] = FORMAT[i];
@@ -131,7 +131,7 @@ int UARTFinger::Compare(uint16_t id){
   return 0;
 }
 
-int UARTFinger::Compare(){
+int MECHA_UARTFinger::Compare(){
   byte CMD[8];
   for(int i = 0; i < 8; i++){
     CMD[i] = FORMAT[i];
@@ -141,7 +141,18 @@ int UARTFinger::Compare(){
   return 0;
 }
 
-int UARTFinger::GetPrivilege(uint16_t id){
+void MECHA_UARTFinger::getRecall(byte *data){
+  int cnt = 0;
+  while(cnt < 8){
+    if(Seri->available()){
+      data[cnt++] = Seri->read();
+    }
+  }
+  return;
+}
+
+
+int MECHA_UARTFinger::GetPrivilege(uint16_t id){
   byte CMD[8];
   for(int i = 0; i<8;i++){
     CMD[i] = FORMAT[i];
@@ -156,7 +167,7 @@ int UARTFinger::GetPrivilege(uint16_t id){
   return 0;
 }
 
-int UARTFinger::send(byte *data){
+int MECHA_UARTFinger::send(byte *data){
   byte cheker = 0x00;
   for(int i = 1; i < 6; i++){
     cheker ^= data[i];
@@ -167,4 +178,5 @@ int UARTFinger::send(byte *data){
     Seri->write(data[i]);
   }
 }
+
 
