@@ -4,7 +4,7 @@
 #if ARDUINO < 100
   #include <WProgram.h>
 #else
-  #include <Arduino.h>
+    #include <Arduino.h>
 #endif
 #include  <SoftwareSerial.h>
 
@@ -34,14 +34,14 @@
 //15.12.24 ---- 산타할아버지 저 여자친구 주세요.
 #define UART_BAUD       19200
 //메카솔루션 화이팅
-//#define CHEKING (A,B,C) (((A^B) = C)? 1:0)
+//15.12.24 ---- 크리스마스 이브 치킨 완전 꿀맛!
 
-class UARTFinger {
+class MECHA_UARTFinger {
   public:
 
-    UARTFinger(SoftwareSerial *);
+    MECHA_UARTFinger(SoftwareSerial *);
 
-    UARTFinger(HardwareSerial *);
+    MECHA_UARTFinger(HardwareSerial *);
     
     int begin();
     
@@ -66,6 +66,8 @@ class UARTFinger {
     int Compare();
     
     int GetPrivilege(uint16_t id);
+
+    void getRecall(byte *);
     //void
     
   private:
