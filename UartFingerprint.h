@@ -34,29 +34,30 @@
 //15.12.24 ---- 산타할아버지 저 여자친구 주세요.
 #define UART_BAUD       19200
 //메카솔루션 화이팅
-#define CHEKING(A,B,C) (((A^B) = C)? 1:0)
-#define CHEKER(A,B) (A^B)
+//#define CHEKING (A,B,C) (((A^B) = C)? 1:0)
 
 class UARTFinger {
   public:
+
     UARTFinger(SoftwareSerial *);
+
     UARTFinger(HardwareSerial *);
     
     int begin();
     
     void Sleep();
     
-    void Mode();
+    void Mode(byte value);
     
-    int AddUser1(uint16_t id,int privilege);
+    int AddUser1(uint16_t id,byte privilege);
     
-    int AddUser2(uint16_t id,int privilege);
+    int AddUser2(uint16_t id,byte privilege);
     
-    int AddUser3(uint16_t id,int privilege);
+    int AddUser3(uint16_t id,byte privilege);
     
-    void DelUser();
+    int DelUser();
     
-    void DelUser(uint16_t id);
+    int DelUser(uint16_t id);
     
     void CountUser();
     
@@ -74,6 +75,7 @@ class UARTFinger {
     HardwareSerial *hwSeri = NULL;
     Stream *Seri;
     int send(byte *);
+    int cheker(byte *);
 };
 
 
