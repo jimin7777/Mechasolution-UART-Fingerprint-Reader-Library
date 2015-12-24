@@ -74,7 +74,7 @@ class UARTFinger {
     HardwareSerial *hwSeri = NULL;
     Stream *Seri;
     int send(byte *);
-}
+};
 
 
 #endif
