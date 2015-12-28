@@ -141,7 +141,7 @@ int MECHA_UARTFinger::Compare(){
   return 0;
 }
 
-void MECHA_UARTFinger::getRespon(){
+void MECHA_UARTFinger::GetRespon(){
   int cnt = 0;
   while(cnt < 8){
     if(Seri->available()){
