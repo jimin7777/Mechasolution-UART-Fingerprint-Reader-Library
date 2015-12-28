@@ -82,7 +82,6 @@ class MECHA_UARTFinger {
     HardwareSerial *hwSeri = NULL;
     Stream *Seri;
     int send(byte *);
-    int cheker(byte *);
     byte DATA[8] = {0,};
 };
 
