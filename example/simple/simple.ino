@@ -1,3 +1,6 @@
+/*
+ * mechasolution UART Fingerprint Example
+ */
 #include <SoftwareSerial.h>
 #include <MECHA_UARTFingerprint.h>
 SoftwareSerial sofSeri(2,3);
