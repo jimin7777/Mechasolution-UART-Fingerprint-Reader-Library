@@ -5,11 +5,10 @@ for this device http://www.waveshare.com/uart-fingerprint-reader.htm
 <div><font size="2">아두이노와 연결해서 사용할 수 있는 UART 지문인식 모듈입니다.</font></div><div><font size="2"><br></font></div><div><font size="2"><br></font></div>
 
 <div>
-<a href="http://www.waveshare.com/wiki/File:UART-Fingerprint-Reader-UserManual.pdf"><font size="2">매뉴얼</font></a></div><div><font size="2"><br></font></div><div><font size="2"><br></font></div><div><font size="3"><br></font></div> size="3"><br></font></div>
-
+<a href="http://www.waveshare.com/wiki/File:UART-Fingerprint-Reader-UserManual.pdf"><font size="2">매뉴얼</font></a></div><div><font size="2"><br></font></div><div><font size="2"><br></font></div><div><font size="3"><br></font></div>
 
 <br><br><br>
-<img src="http://www.waveshare.com/media/catalog/product/cache/1/image/560x560/9df78eab33525d08d6e5fb8d27136e95/u/a/uart-fingerprint-reader_l_1_2.jpg" alt="UART Fingerprint Reader" title="UART Fingerprint Reader" style="display: block;">
+<img src="http://www.waveshare.com/media/catalog/product/cache/1/image/560x560/9df78eab33525d08d6e5fb8d27136e95/u/a/uart-fingerprint-reader_l_1_2.jpg">
 
 <div><font size="3"><b>제품 사양</b><br></font>
 
