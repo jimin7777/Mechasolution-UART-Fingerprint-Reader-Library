@@ -153,7 +153,7 @@ void MECHA_UARTFinger::GetRespon(){
 
 
 uint16_t MECHA_UARTFinger::GetPacket(){
-  return ((DATA[2]<<16)&(DATA[3]));
+  return ((DATA[2]<<16)|(DATA[3]));
 }
 
 byte MECHA_UARTFinger::GetFeedback(){
