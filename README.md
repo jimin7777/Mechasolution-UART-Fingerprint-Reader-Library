@@ -2,7 +2,9 @@
 for waveshare UART Fingerprint arduino lib <br>
 for this device http://www.waveshare.com/uart-fingerprint-reader.htm
 
-<div><font size="2">아두이노와 연결해서 사용할 수 있는 UART 지문인식 모듈입니다.</font></div><div><font size="2"><br></font></div><div><font size="2"><br></font></div><div><font size="2"><img src="/shop/lib/meditor/../../data/editor/1451274343.jpg"><br></font></div><div><font size="2"><br></font></div><div><font size="2"><br></font></div><div><a href="https://github.com/keepworking/Mechasolution-UART-Fingerprint-Library"><font size="2">아두이노 라이브러리 바로가기</font></a></div><div><font size="2"><br></font></div><div><font size="2"><br></font></div><div><font size="2"><br></font></div>
+<div><font size="2">아두이노와 연결해서 사용할 수 있는 UART 지문인식 모듈입니다.</font></div><div><font size="2"><br></font></div><div><font size="2"><br></font></div>
+
+
 
 <div>
 <a href="http://www.waveshare.com/wiki/File:UART-Fingerprint-Reader-UserManual.pdf"><font size="2">매뉴얼</font></a></div><div><font size="2"><br></font></div><div><font size="2"><br></font></div><div><font size="3"><br></font></div><div><font size="3"><br></font></div><div><font size="3"><b>제품 사양</b><br></font>
