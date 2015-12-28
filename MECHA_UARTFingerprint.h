@@ -67,7 +67,12 @@ class MECHA_UARTFinger {
     
     int GetPrivilege(uint16_t id);
 
-    void getRecall(byte *);
+    void GetRespon();
+    
+    uint16_t GetPacket();
+    
+    byte GetFeedback();
+  
     //void
     
   private:
@@ -78,6 +83,7 @@ class MECHA_UARTFinger {
     Stream *Seri;
     int send(byte *);
     int cheker(byte *);
+    byte DATA[8] = {0,};
 };
 
 
