@@ -38,7 +38,7 @@ void MECHA_UARTFinger::Mode(byte value){
 int MECHA_UARTFinger::AddUser1(uint16_t id,byte privilege){
   if(id>0xfff) return -1;
   byte idL = (id & 0xff);
-  byte idH = (id >> 8) & 0xff;
+  byte idH = (id >> 16) & 0xff;
   byte CMD[8];
   for(int i = 0; i < 8; i++){
     CMD[i] = FORMAT[i];
@@ -53,7 +53,7 @@ int MECHA_UARTFinger::AddUser1(uint16_t id,byte privilege){
 int MECHA_UARTFinger::AddUser2(uint16_t id,byte privilege){
   if(id>0xfff) return -1;
   byte idL = (id & 0xff);
-  byte idH = (id >> 8) & 0xff;
+  byte idH = (id >> 16) & 0xff;
   byte CMD[8];
   for(int i = 0; i < 8; i++){
     CMD[i] = FORMAT[i];
@@ -69,7 +69,7 @@ int MECHA_UARTFinger::AddUser2(uint16_t id,byte privilege){
 int MECHA_UARTFinger::AddUser3(uint16_t id,byte privilege){
   if(id>0xfff) return -1;
   byte idL = (id & 0xff);
-  byte idH = (id >> 8) & 0xff;
+  byte idH = (id >> 16) & 0xff;
   byte CMD[8];
   for(int i = 0; i < 8; i++){
     CMD[i] = FORMAT[i];
@@ -100,7 +100,7 @@ int MECHA_UARTFinger::DelUser(uint16_t id){
   CMD[1] = CMD_DEL_USER;
   if(id>0xfff) return -1;
   byte idL = (id & 0xff);
-  byte idH = (id >> 8) & 0x0f;
+  byte idH = (id >> 16) & 0x0f;
   CMD[2] = idH;
   CMD[3] = idL;
   send(CMD);
@@ -124,7 +124,7 @@ int MECHA_UARTFinger::Compare(uint16_t id){
   CMD[1] = CMD_COMP_1_1;
   if(id>0xfff) return -1;
   byte idL = (id & 0xff);
-  byte idH = (id >> 8) & 0x0f;
+  byte idH = (id >> 16) & 0x0f;
   CMD[2] = idH;
   CMD[3] = idL;
   send(CMD);
@@ -141,14 +141,23 @@ int MECHA_UARTFinger::Compare(){
   return 0;
 }
 
-void MECHA_UARTFinger::getRecall(byte *data){
+void MECHA_UARTFinger::getRespon(){
   int cnt = 0;
   while(cnt < 8){
     if(Seri->available()){
-      data[cnt++] = Seri->read();
+      DATA[cnt++] = Seri->read();
     }
   }
   return;
+}
+
+
+uint16_t MECHA_UARTFinger::GetPacket(){
+  return ((DATA[2]<<16)&(DATA[3]));
+}
+
+byte MECHA_UARTFinger::GetFeedback(){
+  return DATA[4];
 }
 
 
