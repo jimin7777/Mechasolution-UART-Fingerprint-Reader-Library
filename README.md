@@ -114,3 +114,6 @@ for this device http://www.waveshare.com/uart-fingerprint-reader.htm
 </tr>
 </tbody>
 </table></div>
+
+<img src="https://drive.google.com/open?id=0BwIpt2c6_KcfN3ZfT0lsaWJXT1E">
+
